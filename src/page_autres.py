@@ -23,7 +23,7 @@ def steps():
             </div>
             <div style="flex:1 1 420px;min-width:0">
               <h3 style="margin:0 0 10px;font-size:clamp(21px,2.2vw,28px);line-height:1.15;letter-spacing:-0.025em;font-weight:600;text-wrap:pretty">{title}</h3>
-              <p style="margin:0;font-size:16.5px;line-height:1.65;color:#3A3642;max-width:64ch">{text}</p>
+              <p style="margin:0;font-size:16.5px;line-height:1.65;color:#3A3642">{text}</p>
             </div>
           </li>
           '''
@@ -117,7 +117,7 @@ def articles():
             <span style="font-size:14px;color:#585463;font-variant-numeric:tabular-nums">{date}</span>
           </div>
           <h2 style="margin:0 0 16px;font-size:clamp(26px,3.2vw,44px);line-height:1.06;letter-spacing:-0.035em;font-weight:600;text-wrap:pretty">{title}</h2>
-          {"".join(f'<p style="margin:{"0" if i == len(paras) - 1 else "0 0 14px"};font-size:16.5px;line-height:1.65;color:#3A3642;max-width:68ch">{x}</p>' for i, x in enumerate(paras))}
+          {"".join(f'<p style="margin:{"0" if i == len(paras) - 1 else "0 0 14px"};font-size:16.5px;line-height:1.65;color:#3A3642">{x}</p>' for i, x in enumerate(paras))}
           {link}
         </article>
         '''
@@ -146,7 +146,7 @@ ACTUS = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
         <div style="flex:1 1 420px;min-width:0">
           <p style="margin:0 0 16px;font-size:15px;font-weight:600;color:#5C86FF">Sur LinkedIn</p>
           <h2 id="li-title" style="margin:0 0 14px;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600">Suivez nos actualités</h2>
-          <p style="margin:0;font-size:16.5px;line-height:1.6;color:rgba(243,240,233,0.72);max-width:56ch">Nos derniers ateliers, nos rencontres et les coulisses du projet sont publiés sur la page LinkedIn de CharabIA.</p>
+          <p style="margin:0;font-size:16.5px;line-height:1.6;color:rgba(243,240,233,0.72)">Nos derniers ateliers, nos rencontres et les coulisses du projet sont publiés sur la page LinkedIn de CharabIA.</p>
         </div>
         <a href="https://www.linkedin.com/company/charab-ia/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;box-sizing:border-box;background:#F3F0E9;color:#0B0D18;font-size:16px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Voir la page LinkedIn <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
       </div>

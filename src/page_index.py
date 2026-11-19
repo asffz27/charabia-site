@@ -66,7 +66,7 @@ BODY = f'''<div style="background:#F3F0E9;overflow-x:hidden">
       <h1 data-reveal="" translate="no" aria-label="CharabIA" style="margin:0 0 36px;display:flex;align-items:baseline;font-family:'Archivo Black',system-ui,sans-serif;font-weight:400;font-size:clamp(58px,14vw,212px);line-height:0.78;letter-spacing:-0.02em;text-shadow:0.03em 0.04em 0 #93A9F7"><span>C</span><span style="font-size:0.6em">H</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">R</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">B</span><span style="font-size:1.06em;color:#5C86FF">i</span><span style="color:#5C86FF">A</span></h1>
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;max-width:860px">
         <p data-reveal="" style="margin:0;font-size:clamp(21px,2.4vw,31px);line-height:1.3;font-weight:500;letter-spacing:-0.022em;text-wrap:pretty">Nous formons les collégiens et les professionnels à l’intelligence artificielle.</p>
-        <p data-reveal="" style="margin:0;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.75);max-width:58ch">En deux heures, dans votre établissement ou dans vos locaux, nous vous formons aux enjeux d’IA par une approche ludique et centrée sur l’humain.</p>
+        <p data-reveal="" style="margin:0;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.75)">En deux heures, dans votre établissement ou dans vos locaux, nous vous formons aux enjeux d’IA par une approche ludique et centrée sur l’humain.</p>
         <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
           <a href="colleges.html" style="background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Découvrir les ateliers collèges</a>
           <a href="entreprises.html" style="background:rgba(243,240,233,0.1);color:#F3F0E9;border:1px solid rgba(243,240,233,0.55);font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background 0.22s ease,color 0.22s ease" style-hover="background:#F3F0E9;color:#0B0D18">Découvrir les ateliers entreprises</a>
@@ -139,7 +139,7 @@ BODY = f'''<div style="background:#F3F0E9;overflow-x:hidden">
     <div style="max-width:1140px;margin:0 auto">
       <div data-reveal="" style="display:flex;flex-direction:column;gap:28px;padding-bottom:56px;border-bottom:1px solid rgba(11,13,24,0.14)">
         <h2 style="margin:0;font-size:clamp(34px,5.6vw,80px);line-height:0.98;letter-spacing:-0.045em;font-weight:600;text-wrap:pretty">Nous sommes à votre écoute.</h2>
-        <div style="min-width:0;max-width:64ch">
+        <div style="min-width:0">
           <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:#585463">Vous pouvez nous contacter par e-mail à l'adresse&nbsp;: <a href="mailto:contact.charabia@gmail.com" style="color:#0B0D18;font-weight:600">contact.charabia@gmail.com</a> mais aussi sur <a href="https://www.linkedin.com/company/charab-ia/" target="_blank" rel="noopener">LinkedIn</a>&nbsp;!</p>
           <a href="contact.html?objet=atelier" style="display:inline-flex;background:#0B0D18;color:#F3F0E9;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Organiser un atelier</a>
         </div>

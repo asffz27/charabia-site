@@ -180,7 +180,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
         <span style="font-family:'Instrument Sans',system-ui,sans-serif;font-weight:600;font-size:0.62em;letter-spacing:-0.045em;color:rgba(243,240,233,0.92)">Collèges</span>
       </h1>
       <p style="margin:0 0 18px;font-size:clamp(21px,2.4vw,31px);line-height:1.3;font-weight:500;letter-spacing:-0.022em;text-wrap:pretty">Nous formons les collégiens à l’intelligence artificielle.</p>
-      <p style="margin:0 0 30px;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.78);max-width:60ch">En deux heures, dans votre établissement, vos élèves découvrent ce que l’IA sait vraiment faire. Ils la manipulent en équipe autour d’un plateau de jeu mêlant énigmes et défis et repartent avec les bases d’un usage éclairé, sécurisé et critique de l’IA.</p>
+      <p style="margin:0 0 30px;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.78)">En deux heures, dans votre établissement, vos élèves découvrent ce que l’IA sait vraiment faire. Ils la manipulent en équipe autour d’un plateau de jeu mêlant énigmes et défis et repartent avec les bases d’un usage éclairé, sécurisé et critique de l’IA.</p>
       <a href="#ateliers" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Découvrir les ateliers</a>
     </div>
   </header>
@@ -203,7 +203,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
         <div style="position:relative;margin-top:auto;display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between;color:#F3F0E9">
           <div style="flex:1 1 360px;min-width:0">
             <div style="font-size:clamp(34px,4.4vw,64px);font-weight:600;letter-spacing:-0.04em;line-height:1.02;margin-bottom:14px;text-wrap:pretty">Collèges</div>
-            <div style="font-size:17px;line-height:1.55;color:rgba(243,240,233,0.88);max-width:46ch">Comprendre l’IA pour mieux grandir avec elle.</div>
+            <div style="font-size:17px;line-height:1.55;color:rgba(243,240,233,0.88)">Comprendre l’IA pour mieux grandir avec elle.</div>
           </div>
           <div style="flex:0 1 340px;min-width:0;display:flex;flex-direction:column;gap:10px">
             <div style="font-size:14px;font-weight:600;color:rgba(243,240,233,0.8)">Deux ateliers disponibles</div>
@@ -219,7 +219,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(11,13,24,0.14);border:1px solid rgba(11,13,24,0.14);border-radius:22px;overflow:hidden">
         {ATOUTS}
       </div>
-      <p style="margin:14px 0 0;font-size:13px;line-height:1.55;color:#6b6676;max-width:80ch">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
+      <p style="margin:14px 0 0;font-size:13px;line-height:1.55;color:#6b6676">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
     </div>
   </section>
 
@@ -247,7 +247,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
       <div>
         <div style="font-size:15px;font-weight:600;color:#1B45F2;margin-bottom:12px">Le Grimoire des secrets codés</div>
         <h2 style="margin:0 0 18px;font-size:clamp(40px,5.4vw,76px);line-height:0.98;letter-spacing:-0.045em;font-weight:700">Koh Lant<span style="color:#1B45F2">IA</span></h2>
-        <p style="margin:0 0 30px;font-size:18px;line-height:1.6;color:#3A3642;max-width:48ch">Durant 2&nbsp;heures, vos élèves se transforment en de véritables aventuriers de l’île de Koh&nbsp;LantIA. Ils doivent déjouer les pièges qui leur sont tendus et réussir chacune des épreuves.</p>
+        <p style="margin:0 0 30px;font-size:18px;line-height:1.6;color:#3A3642">Durant 2&nbsp;heures, vos élèves se transforment en de véritables aventuriers de l’île de Koh&nbsp;LantIA. Ils doivent déjouer les pièges qui leur sont tendus et réussir chacune des épreuves.</p>
         <ul style="list-style:none;margin:0 0 32px;padding:0;display:grid;gap:1px;background:rgba(11,13,24,0.12);border:1px solid rgba(11,13,24,0.12);border-radius:18px;overflow:hidden">
           {epreuves(KL, False)}
         </ul>
@@ -261,7 +261,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
       <div>
         <div style="font-size:15px;font-weight:600;color:#5C86FF;margin-bottom:12px">Bienvenue dans l’univers Spat<span style="color:#5C86FF">IA</span>l</div>
         <h2 style="margin:0 0 18px;font-size:clamp(40px,5.4vw,76px);line-height:0.98;letter-spacing:-0.045em;font-weight:700">Spat<span style="color:#5C86FF">IA</span>l</h2>
-        <p style="margin:0 0 30px;font-size:18px;line-height:1.6;color:rgba(243,240,233,0.78);max-width:48ch">Une tempête a corrompu VEGA, l’intelligence artificielle de la station. Les élèves la remettent en état, jeu après jeu.</p>
+        <p style="margin:0 0 30px;font-size:18px;line-height:1.6;color:rgba(243,240,233,0.78)">Une tempête a corrompu VEGA, l’intelligence artificielle de la station. Les élèves la remettent en état, jeu après jeu.</p>
         <ul style="list-style:none;margin:0 0 32px;padding:0;display:grid;gap:1px;background:rgba(243,240,233,0.16);border:1px solid rgba(243,240,233,0.16);border-radius:18px;overflow:hidden">
           {epreuves(SP, True)}
         </ul>
@@ -276,7 +276,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
   <section style="background:#F3F0E9;padding:clamp(64px,7vw,110px) 24px">
     <div style="max-width:1140px;margin:0 auto">
       <h2 style="margin:0 0 14px;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600;text-wrap:pretty">Comprendre l’IA sans écran<span aria-hidden="true">*</span>, consolider les fondamentaux</h2>
-      <p style="margin:0 0 40px;font-size:18px;line-height:1.6;color:#585463;max-width:56ch">Trois fondamentaux travaillés en équipe, jeu après jeu.</p>
+      <p style="margin:0 0 40px;font-size:18px;line-height:1.6;color:#585463">Trois fondamentaux travaillés en équipe, jeu après jeu.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-bottom:14px">
         {fondamental("Français&nbsp;: écrire avec rigueur", "Orthographe, syntaxe et mots justes deviennent nécessaires pour piloter l’IA&nbsp;: l’élève affine son prompt jusqu’à obtenir une image fidèle.", "Québec&nbsp;: Communiquer · Produire du contenu<br>Pix IA&nbsp;: 2.2 Utiliser une IA générative")}
         {fondamental("Mathématiques&nbsp;: raisonner et arbitrer", "L’énigme mathématique oblige à choisir&nbsp;: quand s’appuyer sur l’IA, quand réfléchir soi-même&nbsp;? Entraide, écoute et décision collective.", "Québec&nbsp;: Résoudre une variété de problèmes · Collaborer")}
@@ -286,8 +286,8 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
         {chiffre("12/12", "dimensions du Cadre de référence de la compétence numérique du Québec mobilisées")}
         {chiffre("33/41", "compétences Pix IA de niveaux Novice et Indépendant couvertes ou amorcées par l’ensemble des ateliers CharabIA")}
       </div>
-      <p style="margin:18px 0 0;font-size:13px;line-height:1.55;color:#6b6676;max-width:80ch">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
-      <p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676;max-width:80ch">Sources&nbsp;: Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
+      <p style="margin:18px 0 0;font-size:13px;line-height:1.55;color:#6b6676">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
+      <p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676">Sources&nbsp;: Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
     </div>
   </section>
 
@@ -308,7 +308,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
   <section style="background:#0B0D18;color:#F3F0E9;padding:clamp(64px,7vw,104px) 24px">
     <div style="max-width:1140px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
       <h2 style="margin:0;font-size:clamp(32px,4.6vw,64px);line-height:1;letter-spacing:-0.045em;font-weight:600;text-wrap:pretty">Organiser un atelier dans votre établissement</h2>
-      <div style="max-width:64ch">
+      <div>
         <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:rgba(243,240,233,0.75)">Vous souhaitez organiser un atelier CharabIA dans votre établissement&nbsp;? Écrivez-nous à <a href="mailto:contact.charabia@gmail.com" style="color:#F3F0E9;font-weight:600">contact.charabia@gmail.com</a>. Nous reviendrons vers vous pour planifier votre atelier.</p>
         <a href="contact.html?objet=atelier" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Organiser un atelier</a>
       </div>
