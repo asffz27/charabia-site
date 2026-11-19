@@ -155,7 +155,8 @@ BODY = f'''<div style="background:#F3F0E9;overflow-x:hidden">
 
 </div>'''
 
-CSS = """  body { background: #05060C; }
+CSS = """
+  .intro-pending nav, .intro-pending [data-reveal] { opacity: 0; }  body { background: #05060C; }
   @keyframes cb-ripple { 0% { transform: scale(0.2); opacity: 0.9; } 100% { transform: scale(10); opacity: 0; } }
   .q-btn { flex:1; background:transparent; color:#F3F0E9; border:1px solid rgba(243,240,233,0.32); font-family:inherit; font-size:15.5px; font-weight:600; padding:13px 10px; border-radius:99px; cursor:pointer; transition:background 0.2s ease,border-color 0.2s ease; }
   .q-btn:hover { background:#1B45F2; border-color:#1B45F2; }
@@ -168,5 +169,8 @@ CSS = """  body { background: #05060C; }
 SCRIPTS = '<script src="/js/shader-gradient.js"></script>\n<script src="/js/accueil.js"></script>'
 
 
+HEAD_JS = """<script>try{if(sessionStorage.getItem('cb-intro')!=='1'&&new URLSearchParams(location.search).get('intro')!=='0')document.documentElement.classList.add('intro-pending')}catch(e){}</script>"""
+
+
 def build():
-    return page("CharabIA — former à l'intelligence artificielle", "#05060C", BODY, CSS, SCRIPTS, body_bg="#05060C")
+    return page("CharabIA — former à l'intelligence artificielle", "#05060C", BODY, CSS, SCRIPTS, body_bg="#05060C", head_js=HEAD_JS)

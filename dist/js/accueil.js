@@ -111,6 +111,7 @@
     if (seen || new URLSearchParams(location.search).get('intro') === '0') {
       overlay.style.display = 'none';
       if (hg) hg.style.opacity = '1';
+      document.documentElement.classList.remove('intro-pending');
       reveals();
       return;
     }
@@ -120,6 +121,7 @@
     document.body.style.overflow = 'hidden';
     var navEl = document.querySelector('nav');
     if (navEl) { navEl.style.transition = 'opacity 0.85s ease'; navEl.style.opacity = '0'; }
+    document.documentElement.classList.remove('intro-pending');
     var done = false;
     var exit = function () {
       if (done) return;

@@ -120,7 +120,7 @@ def hover_to_css(html):
     return html, "\n  ".join(rules)
 
 
-def page(title, theme, body, extra_css="", scripts="", desc="", body_bg="#F3F0E9"):
+def page(title, theme, body, extra_css="", scripts="", desc="", body_bg="#F3F0E9", head_js=""):
     body, hover_css = hover_to_css(body)
     # liens internes en chemins absolus « propres » (Vercel cleanUrls)
     body = re.sub(r'href="index\.html(#[^"]*)?"', lambda m: f'href="/{m.group(1) or ""}"', body)
@@ -134,6 +134,7 @@ def page(title, theme, body, extra_css="", scripts="", desc="", body_bg="#F3F0E9
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{theme}">
+{head_js}
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title}">
