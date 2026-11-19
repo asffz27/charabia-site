@@ -194,7 +194,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
 
   <section style="background:#EAE6DC;padding:clamp(56px,6vw,88px) 24px;border-top:1px solid rgba(11,13,24,0.08)">
     <div style="max-width:1140px;margin:0 auto">
-      <h2 class="one-line" style="margin:0 0 20px;font-size:clamp(24px,2.4vw,28px);line-height:1.2;letter-spacing:-0.03em;font-weight:700">Former les citoyens de demain à l’intelligence artificielle, dès aujourd’hui.</h2>
+      <h2 style="margin:0 0 20px;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600;text-wrap:pretty">Former les citoyens de demain à l’intelligence artificielle, dès aujourd’hui.</h2>
       <p style="margin:0 0 28px;font-size:18px;line-height:1.6;color:#585463">Un atelier complet de deux heures combinant théorie, jeu et réflexion.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <span style="{PILL2}">2&nbsp;h par atelier</span>
@@ -340,7 +340,6 @@ CSS = FACES + f"\n  .bx-face {{ {FACE} }}\n  .bx-back {{ {BACK} }}\n  .bx-flap {
   .ch-strip { position: absolute; left: -62px; top: -8px; width: 124px; height: 16.5px; box-sizing: border-box; backface-visibility: visible; background: linear-gradient(90deg, #e9cf98 0 7px, #a8824c 7px 8.5px, rgba(0,0,0,0) 8.5px calc(100% - 8.5px), #a8824c calc(100% - 8.5px) calc(100% - 7px), #e9cf98 calc(100% - 7px)), linear-gradient(180deg, #a8542c, #8a4322 70%, #6c341a); box-shadow: inset 0 -1px 0 rgba(40,18,6,0.55); }
   .ch-cap { position: absolute; left: -39px; top: -19.5px; width: 78px; height: 39px; box-sizing: border-box; border: 5px solid #e9cf98; border-bottom: none; border-radius: 39px 39px 0 0; background: repeating-linear-gradient(180deg, #8f4423 0 9px, #6c3217 9px 10.5px); backface-visibility: visible; }
   @media (max-width: 820px) { .kl-boxcol { order: 2; } }
-  @media (min-width: 900px) { .one-line { white-space: nowrap; } }
 """
 
 
