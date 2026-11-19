@@ -36,7 +36,7 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
         <span translate="no" aria-label="CharabIA" style="display:inline-flex;align-items:baseline;font-family:'Archivo Black',system-ui,sans-serif;letter-spacing:-0.02em;text-shadow:0.03em 0.04em 0 #93A9F7"><span>C</span><span style="font-size:0.6em">H</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">R</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">B</span><span style="font-size:1.06em;color:#5C86FF">i</span><span style="color:#5C86FF">A</span></span>
         <span style="font-family:'Instrument Sans',system-ui,sans-serif;font-weight:600;font-size:0.62em;letter-spacing:-0.045em;color:rgba(243,240,233,0.92)">Entreprises</span>
       </h1>
-      <p class="date-badge" aria-label="À partir de janvier 2027" style="margin:0 0 22px"><span class="date-dot" aria-hidden="true"></span><span class="date-txt" aria-hidden="true" data-final="À partir de janvier 2027">À partir de janvier 2027</span></p>
+      <p class="date-badge"><span class="date-rule" aria-hidden="true"></span><span class="date-txt">À partir de janvier 2027</span></p>
       <p style="margin:0 0 18px;font-size:clamp(21px,2.4vw,31px);line-height:1.3;font-weight:500;letter-spacing:-0.022em;text-wrap:pretty">Nous formons les professionnels à l’intelligence artificielle.</p>
       <p style="margin:0 0 30px;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.78);max-width:60ch">Dans vos locaux, nous formons vos équipes aux enjeux d’IA par une approche ludique et centrée sur l’humain. Chaque module dure deux heures et peut se suivre seul ou en parcours.</p>
       <a href="contact.html?profil=entreprise" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" style-hover="background:#1B45F2;color:#F3F0E9">Nous contacter</a>
@@ -78,26 +78,15 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
 
 
 DATE_CSS = """
-  .date-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px 8px 14px; border-radius: 99px; border: 1px solid rgba(243,240,233,0.28); background: rgba(243,240,233,0.06); font-size: 14px; font-weight: 500; letter-spacing: 0.01em; color: #F3F0E9; }
-  .date-txt { font-variant-numeric: tabular-nums; }
-  .date-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #7CA0FF; flex: none; }
-  .date-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #7CA0FF; animation: datePulse 2.4s ease-out infinite; }
-  @keyframes datePulse { 0% { transform: scale(1); opacity: 0.7; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) { .date-dot::after { animation: none; } }
+  .date-badge { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,240,233,0.72); }
+  .date-rule { width: 32px; height: 1px; background: rgba(243,240,233,0.5); transform-origin: left center; animation: dateRule 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s both; }
+  .date-txt { animation: dateFade 0.9s cubic-bezier(0.22,1,0.36,1) 0.45s both; }
+  @keyframes dateRule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes dateFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .date-rule, .date-txt { animation: none; } }
 """
-DATE_JS = """<script>
-(function(){
-  var el=document.querySelector('.date-txt'); if(!el) return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var fin=el.getAttribute('data-final'), pool='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', start=null, dur=1100;
-  function step(t){ if(!start) start=t; var k=Math.min(1,(t-start)/dur), n=Math.floor(k*fin.length), out='';
-    for(var i=0;i<fin.length;i++){ var c=fin[i]; out+= (i<n||c===' ') ? c : pool[Math.floor(Math.random()*pool.length)]; }
-    el.textContent=out; if(k<1) requestAnimationFrame(step); else el.textContent=fin; }
-  setTimeout(function(){ requestAnimationFrame(step); }, 350);
-})();
-</script>"""
 
 
 def build():
-    return page("Entreprises — CharabIA", "#0B0D18", BODY, extra_css=DATE_CSS, scripts=DATE_JS,
+    return page("Entreprises — CharabIA", "#0B0D18", BODY, extra_css=DATE_CSS,
                 desc="CharabIA forme les professionnels à l’intelligence artificielle : des modules de deux heures, ludiques et centrés sur l’humain.")
