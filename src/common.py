@@ -134,6 +134,7 @@ def page(title, theme, body, extra_css="", scripts="", desc="", body_bg="#F3F0E9
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="{theme}">
+<meta name="google-site-verification" content="ud0AhfVXFh4JOHHhsf3M71Nomx246Tx-Gst28suZ_NQ">
 {head_js}
 <title>{title}</title>
 <meta name="description" content="{desc}">
