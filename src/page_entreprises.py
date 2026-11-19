@@ -30,7 +30,7 @@ def info(dt, dd):
 BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
 {nav("entreprises.html")}
 
-  <header style="position:relative;background:#0B0D18 radial-gradient(120% 120% at 80% 20%, #1B45F2 0%, #0b1a6e 45%, #0B0D18 85%);color:#F3F0E9;overflow:hidden">
+  <header style="position:relative;background:#0B0D18 radial-gradient(120% 120% at 80% 20%, #1B45F2 0%, #0b1a6e 45%, #0B0D18 85%);color:#F3F0E9;overflow:hidden;min-height:clamp(580px,43vw,620px)">
     <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(112px,12vw,152px) 24px clamp(56px,6vw,88px)">
       <h1 style="margin:0 0 30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 0.28em;font-weight:400;font-size:clamp(46px,8vw,120px);line-height:0.9">
         <span translate="no" aria-label="CharabIA" style="display:inline-flex;align-items:baseline;font-family:'Archivo Black',system-ui,sans-serif;letter-spacing:-0.02em;text-shadow:0.03em 0.04em 0 #93A9F7"><span>C</span><span style="font-size:0.6em">H</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">R</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">B</span><span style="font-size:1.06em;color:#5C86FF">i</span><span style="color:#5C86FF">A</span></span>

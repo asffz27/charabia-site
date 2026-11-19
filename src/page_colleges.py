@@ -172,7 +172,7 @@ ATOUTS = "".join([
 BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
 {nav("colleges.html")}
 
-  <header id="top" style="position:relative;background:#0b1a6e radial-gradient(130% 120% at 28% 38%, #1B45F2 0%, #1236b8 42%, #0b1a6e 78%, #070F38 100%);color:#F3F0E9;overflow:hidden">
+  <header id="top" style="position:relative;background:#0b1a6e radial-gradient(130% 120% at 28% 38%, #1B45F2 0%, #1236b8 42%, #0b1a6e 78%, #070F38 100%);color:#F3F0E9;overflow:hidden;min-height:clamp(580px,43vw,620px)">
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(5,6,12,0.3) 0%, rgba(5,6,12,0.34) 50%, rgba(5,6,12,0.72) 100%)"></div>
     <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(112px,12vw,152px) 24px clamp(56px,6vw,88px)">
       <h1 style="margin:0 0 30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 0.28em;font-weight:400;font-size:clamp(46px,8vw,120px);line-height:0.9">
