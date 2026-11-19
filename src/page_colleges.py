@@ -189,12 +189,6 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
     <div style="max-width:1140px;margin:0 auto">
       <p style="margin:0 0 40px;font-size:17px;font-weight:600;color:#1B45F2">Pourquoi des ateliers Collèges</p>
       <p style="margin:0;font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-0.035em;font-weight:600;text-wrap:pretty">Nous agissons pour que l’intelligence artificielle ne creuse pas davantage les inégalités entre les élèves.</p>
-      <p style="margin:40px 0 24px;font-size:18px;line-height:1.6;color:#585463">Un atelier complet de deux heures combinant théorie, jeu et réflexion.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <span style="{PILL2}">2&nbsp;h par atelier</span>
-        <span style="{PILL2}">15 élèves par atelier</span>
-        <span style="{PILL2}">BoxIA réutilisable</span>
-      </div>
     </div>
   </section>
 
