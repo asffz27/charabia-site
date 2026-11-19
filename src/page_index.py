@@ -173,4 +173,4 @@ HEAD_JS = """<script>try{if(sessionStorage.getItem('cb-intro')!=='1'&&new URLSea
 
 
 def build():
-    return page("CharabIA — former à l'intelligence artificielle", "#05060C", BODY, CSS, SCRIPTS, body_bg="#05060C", head_js=HEAD_JS)
+    return page("CharabIA — Ateliers d’initiation à l’intelligence artificielle pour collèges et entreprises", "#05060C", BODY, CSS, SCRIPTS, body_bg="#05060C", head_js=HEAD_JS)

@@ -88,5 +88,5 @@ DATE_CSS = """
 
 
 def build():
-    return page("Entreprises — CharabIA", "#0B0D18", BODY, extra_css=DATE_CSS,
+    return page("Formations à l’IA pour les entreprises — CharabIA", "#0B0D18", BODY, extra_css=DATE_CSS,
                 desc="CharabIA forme les professionnels à l’intelligence artificielle : des modules de deux heures, ludiques et centrés sur l’humain.")

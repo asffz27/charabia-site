@@ -183,11 +183,11 @@ MENTIONS = f'''<div style="background:#F3F0E9;min-height:100svh">
 
 
 def build_histoire():
-    return page("Notre histoire — CharabIA", "#F3F0E9", HISTOIRE, desc="L’histoire de CharabIA, association née à l’Incubateur des politiques publiques de Sciences Po.")
+    return page("Notre histoire : une association née à Sciences Po — CharabIA", "#F3F0E9", HISTOIRE, desc="L’histoire de CharabIA, association née à l’Incubateur des politiques publiques de Sciences Po.")
 
 
 def build_actualites():
-    return page("Actualités — CharabIA", "#F3F0E9", ACTUS, desc="Les dernières actualités de CharabIA : ateliers, publications et événements.")
+    return page("Actualités : ateliers IA en collège et partenariats — CharabIA", "#F3F0E9", ACTUS, desc="Les dernières actualités de CharabIA : ateliers, publications et événements.")
 
 
 def build_mentions():

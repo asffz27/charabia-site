@@ -167,5 +167,5 @@ CSS = """  .f-in { width: 100%; box-sizing: border-box; background: #F3F0E9; bor
 
 
 def build():
-    return page("Nous contacter — CharabIA", "#F3F0E9", BODY, CSS, '<script src="/js/contact.js"></script>',
+    return page("Organiser un atelier IA : nous contacter — CharabIA", "#F3F0E9", BODY, CSS, '<script src="/js/contact.js"></script>',
                 desc="Contactez CharabIA pour organiser un atelier d’initiation à l’IA dans votre établissement ou imaginer un partenariat.")

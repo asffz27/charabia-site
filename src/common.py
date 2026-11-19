@@ -127,7 +127,7 @@ def page(title, theme, body, extra_css="", scripts="", desc="", body_bg="#F3F0E9
     body = re.sub(r'href="([a-z-]+)\.html', r'href="/\1', body)
     body = re.sub(r'(src|url\()="?assets/', lambda m: m.group(0).replace("assets/", "/assets/"), body)
     body = body.replace('src="assets/', 'src="/assets/')
-    desc = desc or "CharabIA forme les collégiens et les lycéens à l’intelligence artificielle grâce à des escape games pédagogiques."
+    desc = desc or "CharabIA, association issue de Sciences Po, forme les collégiens et les professionnels à l’intelligence artificielle grâce à des escape games pédagogiques."
     return minify(f'''<!DOCTYPE html>
 <html lang="fr">
 <head>

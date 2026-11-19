@@ -332,5 +332,5 @@ CSS = FACES + f"\n  .bx-face {{ {FACE} }}\n  .bx-back {{ {BACK} }}\n  .bx-flap {
 
 
 def build():
-    return page("Collèges — CharabIA", "#F3F0E9", BODY, CSS, '<script src="/js/colleges.js"></script>',
+    return page("Ateliers d’initiation à l’IA pour les collèges — CharabIA", "#F3F0E9", BODY, CSS, '<script src="/js/colleges.js"></script>',
                 desc="Koh LantIA et SpatIAl : deux escape games de deux heures pour initier les élèves de 6e et de 5e à l’intelligence artificielle.")
