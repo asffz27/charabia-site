@@ -78,7 +78,7 @@ BODY = f'''<div style="background:#F3F0E9;overflow-x:hidden">
   <section style="background:#F3F0E9;padding:clamp(64px,7vw,110px) 24px">
     <div style="max-width:1140px;margin:0 auto">
       <p data-reveal="" style="margin:0 0 40px;font-size:17px;font-weight:600;color:#1B45F2">Pourquoi nous existons</p>
-      <p data-reveal="" style="margin:0;font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-0.035em;font-weight:600;text-wrap:pretty">Former et informer le plus grand nombre pour que l’IA ne creuse pas davantage les inégalités sociales.</p>
+      <p data-reveal="" style="margin:0;font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-0.035em;font-weight:600;text-wrap:pretty">Former les citoyens de demain à l’intelligence artificielle, dès aujourd’hui, pour que l’IA ne creuse pas davantage les inégalités sociales.</p>
     </div>
   </section>
 
