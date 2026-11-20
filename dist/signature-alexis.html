@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Signature e-mail — Alexis Souffez</title>
+<style>
+  body { margin: 0; background: #F3F0E9; color: #0B0D18; font-family: Arial, Helvetica, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
+  h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .aide { font-size: 16px; line-height: 1.5; color: #3A3642; margin: 0 0 32px; }
+  .cadre { background: #FFFFFF; border: 1px solid rgba(11,13,24,0.12); border-radius: 16px; padding: 32px; }
+  button { margin-top: 24px; background: #1B45F2; color: #F3F0E9; border: 0; border-radius: 99px; padding: 14px 28px; font: 600 16px Arial, sans-serif; cursor: pointer; }
+  button:focus-visible { outline: 2px solid #0B0D18; outline-offset: 3px; }
+  #ok { margin-left: 12px; font-size: 15px; color: #1B45F2; }
+  ol { font-size: 16px; line-height: 1.7; color: #3A3642; padding-left: 20px; margin: 40px 0 0; }
+</style>
+</head>
+<body>
+<main>
+<h1>Ta signature e-mail CharabIA</h1>
+<p class="aide">Clique sur « Copier la signature », puis colle-la dans Gmail.</p>
+
+<div class="cadre">
+<div id="signature">
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#0B1A6E" style="border-collapse:separate;font-family:Arial,Helvetica,sans-serif;background-color:#0B1A6E;background-image:linear-gradient(135deg,#1B45F2 0%,#0B1A6E 55%,#0B0D18 100%);border-radius:14px;">
+  <tr>
+    <td style="padding:20px 18px 20px 22px;vertical-align:middle;">
+      <img src="https://charabia-site.vercel.app/assets/signature/alexis.png" width="88" height="88" alt="Alexis Souffez" style="display:block;width:88px;height:88px;border-radius:44px;border:2px solid #93A9F7;">
+    </td>
+    <td style="padding:20px 26px 20px 18px;border-left:2px solid #93A9F7;vertical-align:middle;">
+      <div style="font-size:16px;font-weight:bold;color:#F3F0E9;line-height:22px;">Alexis Souffez</div>
+      <div style="font-size:13px;color:#93A9F7;line-height:20px;font-weight:bold;">Co-fondateur de CharabIA</div>
+      <div style="font-size:13px;line-height:20px;padding-top:6px;">
+        <a href="tel:+33651015154" style="color:#F3F0E9;text-decoration:none;">+33 6 51 01 51 54</a>
+      </div>
+      <div style="font-size:13px;line-height:20px;">
+        <a href="mailto:contact.charabia@gmail.com" style="color:#F3F0E9;text-decoration:none;">contact.charabia@gmail.com</a>
+      </div>
+      <div style="padding-top:10px;">
+        <a href="https://charabia-site.vercel.app" style="text-decoration:none;"><img src="https://charabia-site.vercel.app/assets/signature/charabia-clair.png" width="110" height="23" alt="CharabIA" style="display:block;width:110px;height:23px;border:0;"></a>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<button type="button" id="copier">Copier la signature</button><span id="ok" role="status"></span>
+
+<ol>
+  <li>Dans Gmail, clique sur la roue dentée en haut à droite, puis sur « Voir tous les paramètres ».</li>
+  <li>Dans l’onglet « Général », descends jusqu’à « Signature » et clique sur « Créer ».</li>
+  <li>Colle la signature dans le champ (Cmd + V ou Ctrl + V).</li>
+  <li>Choisis-la comme signature par défaut pour les nouveaux e-mails et les réponses.</li>
+  <li>Tout en bas de la page, clique sur « Enregistrer les modifications ».</li>
+</ol>
+</main>
+<script>
+document.getElementById('copier').addEventListener('click', function () {
+  var node = document.getElementById('signature');
+  var range = document.createRange(); range.selectNodeContents(node);
+  var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) {}
+  sel.removeAllRanges();
+  document.getElementById('ok').textContent = ok ? 'Copiée. Colle-la dans Gmail.' : 'Sélectionne la signature à la main, puis copie-la.';
+});
+</script>
+</body>
+</html>
