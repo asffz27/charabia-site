@@ -6,7 +6,7 @@
      « Application Web » du Google Apps Script (elle se termine par /exec).
      Laissée vide, le formulaire ouvre la messagerie du visiteur avec un e-mail prérempli
      adressé à contact.charabia@gmail.com. */
-  var SCRIPT_URL = '';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt4lXZ8Rx4Iwu-YgXNOEHU_KdVlnGqLZn6YdLswqqr3b_jWw2-qzKBq97NyLw6LtkG/exec';
   var CONTACT_EMAIL = 'contact.charabia@gmail.com';
   /* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */
 
