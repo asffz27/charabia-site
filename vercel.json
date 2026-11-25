@@ -34,6 +34,11 @@
       "source": "/ateliers",
       "destination": "/colleges",
       "permanent": true
+    },
+    {
+      "source": "/histoire",
+      "destination": "/qui-sommes-nous",
+      "permanent": true
     }
   ]
 }

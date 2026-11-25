@@ -8,26 +8,38 @@ STEPS = [
     ("01", "Le point de départ", "Une interrogation", "Au sein de l’Incubateur des politiques publiques de Sciences Po, l’équipe s’est penchée, avec le think tank Renaissance Numérique, sur l’arrivée de l’IA générative chez les plus jeunes. Une question s’est vite imposée : comment éviter que cette technologie ne creuse les inégalités entre les élèves ?"),
     ("02", "Une réponse", "Un escape game pédagogique", "Plutôt qu’un cours, un jeu : un plateau qui transforme la salle de classe en terrain d’aventure. Les élèves manipulent des cartes, ouvrent des coffres et résolvent des énigmes en équipe."),
     ("03", "Une structure", "Une équipe, puis une association", "Le projet s’est structuré en association loi 1901, avec l’ambition de déployer les ateliers dans les établissements scolaires."),
-    ("04", "Février 2026", "Le premier atelier officiel", "Au Foyer Saint-Rémi de Reims, huit élèves de 6e se sont pris au jeu pendant deux heures et sont parvenus à résoudre l’escape game&nbsp;!"),
+    ("04", "Le 1er pas", "Le premier atelier officiel", "Au Foyer Saint-Rémi de Reims, huit élèves de 6e se sont pris au jeu pendant deux heures et sont parvenus à résoudre l’escape game&nbsp;!"),
     ("05", "Aujourd’hui", "Des ateliers qui se multiplient", "Depuis ce premier atelier, les interventions se multiplient. Avec Koh LantIA et SpatIAl, de plus en plus d’élèves découvrent l’IA en jouant et repartent avec les clés pour s’en servir avec esprit critique."),
+    ("06", "À venir", "Des ateliers pour les entreprises", "À partir de janvier 2027, CharabIA accompagne aussi les professionnels, avec des ateliers pensés pour les équipes en entreprise."),
 ]
 
 
 def steps():
     out = ""
-    for num, when, title, text in STEPS:
-        out += f'''<li style="display:flex;flex-wrap:wrap;gap:12px clamp(24px,5vw,72px);padding:clamp(24px,3vw,32px) 0;border-bottom:1px solid rgba(11,13,24,0.14)">
-            <div style="flex:0 0 220px;display:flex;align-items:baseline;gap:16px">
-              <span style="font-size:15px;font-weight:600;color:#1B45F2;font-variant-numeric:tabular-nums">{num}</span>
-              <span style="font-size:15px;font-weight:600;color:#585463">{when}</span>
-            </div>
-            <div style="flex:1 1 420px;min-width:0">
-              <h3 style="margin:0 0 10px;font-size:clamp(21px,2.2vw,28px);line-height:1.15;letter-spacing:-0.025em;font-weight:600;text-wrap:pretty">{title}</h3>
-              <p style="margin:0;font-size:16.5px;line-height:1.65;color:#3A3642">{text}</p>
-            </div>
+    n = len(STEPS)
+    for k, (_num, when, title, text) in enumerate(STEPS):
+        future = when == "À venir"
+        prev_future = False
+        nxt_future = k + 1 < n and STEPS[k + 1][1] == "À venir"
+        line_in = "" if k == 0 else f'<span aria-hidden="true" class="tl-line{" tl-dash" if future else ""}" style="top:0;height:30px"></span>'
+        line_out = "" if k == n - 1 else f'<span aria-hidden="true" class="tl-line{" tl-dash" if nxt_future else ""}" style="top:30px;bottom:0"></span>'
+        dot = '<span aria-hidden="true" class="tl-dot' + (' tl-dot-future' if future else '') + '"></span>'
+        out += f'''<li style="position:relative;padding:0 0 clamp(28px,3.4vw,40px) clamp(40px,5vw,56px)">
+            {line_in}{line_out}{dot}
+            <p style="margin:0 0 8px;font-size:15px;font-weight:600;color:{"#585463" if future else "#1B45F2"};line-height:1.4;padding-top:13px">{when}</p>
+            <h3 style="margin:0 0 10px;font-size:clamp(21px,2.2vw,28px);line-height:1.15;letter-spacing:-0.025em;font-weight:600;text-wrap:pretty;{"color:#585463" if future else ""}">{title}</h3>
+            <p style="margin:0;max-width:72ch;font-size:16.5px;line-height:1.65;color:#3A3642">{text}</p>
           </li>
           '''
     return out
+
+
+TL_CSS = """
+  .tl-line { position:absolute; left:7px; width:0; border-left:2px solid #1B45F2; }
+  .tl-line.tl-dash { border-left:2px dashed rgba(27,69,242,0.55); }
+  .tl-dot { position:absolute; left:0; top:16px; width:16px; height:16px; border-radius:50%; background:#1B45F2; box-shadow:0 0 0 4px #F3F0E9; }
+  .tl-dot-future { background:#F3F0E9; border:2px dashed #1B45F2; box-sizing:border-box; }
+"""
 
 
 def team():
@@ -42,11 +54,11 @@ def team():
 
 
 HISTOIRE = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
-{nav("histoire.html")}
+{nav("qui-sommes-nous.html")}
 
   <header style="background:#F3F0E9">
     <div style="max-width:1140px;margin:0 auto;padding:clamp(112px,12vw,152px) 24px clamp(32px,4vw,48px)">
-      <h1 style="margin:0 0 20px;font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-0.035em;font-weight:600">L’histoire de l’association</h1>
+      <h1 style="margin:0 0 20px;font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-0.035em;font-weight:600">Qui sommes-nous&nbsp;?</h1>
       <p style="margin:0;font-size:clamp(19px,2vw,26px);line-height:1.4;font-weight:500;letter-spacing:-0.015em;color:#3A3642;text-wrap:pretty">CharabIA est née d’une inquiétude&nbsp;: voir l’intelligence artificielle creuser davantage les inégalités entre les élèves.</p>
     </div>
   </header>
@@ -68,8 +80,8 @@ HISTOIRE = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidde
 
   <section style="padding:clamp(56px,6vw,88px) 24px">
     <div style="max-width:1140px;margin:0 auto">
-      <h2 style="margin:0 0 32px;font-size:clamp(30px,4.2vw,56px);line-height:1.04;letter-spacing:-0.035em;font-weight:600">Les grandes étapes</h2>
-      <ol style="list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid rgba(11,13,24,0.14)">
+      <h2 style="margin:0 0 clamp(28px,3vw,40px);font-size:clamp(30px,4.2vw,56px);line-height:1.04;letter-spacing:-0.035em;font-weight:600">Les grandes étapes</h2>
+      <ol style="list-style:none;margin:0;padding:0">
           {steps()}
       </ol>
     </div>
@@ -84,7 +96,7 @@ HISTOIRE = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidde
       </div>
     </div>
   </section>
-{footer("histoire.html")}
+{footer("qui-sommes-nous.html")}
 </div>'''
 
 # ---------------- Actualités ----------------
@@ -183,7 +195,7 @@ MENTIONS = f'''<div style="background:#F3F0E9;min-height:100svh">
 
 
 def build_histoire():
-    return page("Notre histoire : une association née à Sciences Po — CharabIA", "#F3F0E9", HISTOIRE, desc="L’histoire de CharabIA, association née à l’Incubateur des politiques publiques de Sciences Po.")
+    return page("Qui sommes-nous ? Une association née à Sciences Po — CharabIA", "#F3F0E9", HISTOIRE, extra_css=TL_CSS, desc="L’histoire de CharabIA, association née à l’Incubateur des politiques publiques de Sciences Po.")
 
 
 def build_actualites():

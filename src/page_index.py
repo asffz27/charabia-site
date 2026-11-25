@@ -108,7 +108,7 @@ BODY = f'''<div style="background:#F3F0E9;overflow-x:hidden">
     <div style="max-width:1140px;margin:0 auto">
       <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between;margin:0 0 44px">
         <h2 style="margin:0;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600">Qui sommes-nous&nbsp;?</h2>
-        <a href="histoire.html" style="font-size:15px;font-weight:600;color:#1B45F2" style-hover="color:#0B0D18">Découvrir notre histoire</a>
+        <a href="qui-sommes-nous.html" style="font-size:15px;font-weight:600;color:#1B45F2" style-hover="color:#0B0D18">Découvrir notre histoire</a>
       </div>
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,280px));justify-content:center;gap:clamp(10px,2vw,14px)">
           {team_cards()}

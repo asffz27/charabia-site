@@ -31,12 +31,21 @@ a:focus-visible, [tabindex]:focus-visible, button:focus-visible { outline: 2px s
 html { scroll-behavior: auto; }
 *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-@media (max-width: 760px) {
-.nav-cta { display: none !important; }
-.nav-bar { flex-wrap: wrap !important; padding: 10px 14px 6px !important; gap: 6px 8px !important; }
-.nav-links { flex-wrap: nowrap !important; width: 100%; justify-content: flex-start !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.nav-links::-webkit-scrollbar { display: none; }
-.nav-links a { padding: 7px 11px !important; font-size: 14px !important; white-space: nowrap; flex: 0 0 auto; }
+.nav-toggle { display: none; }
+.nav-panel { display: none; }
+@media (max-width: 980px) {
+.nav-links { display: none !important; }
+.nav-toggle { display: inline-flex; align-items: center; gap: 10px; background: rgba(243,240,233,0.12); border: 1px solid rgba(255,255,255,0.35); color: #F3F0E9; font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 99px; cursor: pointer; min-height: 44px; }
+.nav-toggle svg { display: block; }
+.nav-toggle .ic-close { display: none; }
+.nav-open .nav-toggle .ic-open { display: none; }
+.nav-open .nav-toggle .ic-close { display: block; }
+.nav-open .nav-panel { display: flex; }
+.nav-panel { flex-direction: column; width: 100%; padding: 8px 0 14px; gap: 2px; }
+.nav-panel a { color: rgba(243,240,233,0.82); font-size: 19px; font-weight: 500; padding: 13px 6px; border-bottom: 1px solid rgba(243,240,233,0.1); }
+.nav-panel a[aria-current="page"] { color: #F3F0E9; font-weight: 600; }
+.nav-panel a.nav-panel-cta { margin-top: 14px; border: 0; background: #1B45F2; color: #F3F0E9; text-align: center; border-radius: 99px; font-weight: 600; font-size: 16px; }
+.nav-open.nav-bar { background: rgba(11,13,24,0.96) !important; }
 }
 body { background: #F3F0E9; }
 .f-in { width: 100%; box-sizing: border-box; background: #F3F0E9; border: 1px solid rgba(11,13,24,0.2); border-radius: 12px; padding: 13px 14px; font: inherit; font-size: 16px; color: #0B0D18; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
@@ -57,32 +66,41 @@ body { background: #F3F0E9; }
 .hv1:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
 .hv2:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
 .hv3:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
-.hv4:hover{color:#1B45F2 !important}
+.hv4:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
 .hv5:hover{color:#1B45F2 !important}
-.hv6:hover{background:#1B45F2 !important}
-.hv7:hover{border-color:#1B45F2 !important}
-.hv8:hover{color:#1B45F2 !important}
+.hv6:hover{color:#1B45F2 !important}
+.hv7:hover{background:#1B45F2 !important}
+.hv8:hover{border-color:#1B45F2 !important}
 .hv9:hover{color:#1B45F2 !important}
 .hv10:hover{color:#1B45F2 !important}
 .hv11:hover{color:#1B45F2 !important}
 .hv12:hover{color:#1B45F2 !important}
 .hv13:hover{color:#1B45F2 !important}
+.hv14:hover{color:#1B45F2 !important}
 </style>
 </head>
 <body>
 <div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
-<nav class="nav-bar" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
+<nav class="nav-bar" aria-label="Navigation principale" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
 <a href="/" aria-label="CharabIA, retour à l’accueil" style="display:flex;align-items:center;gap:11px;color:#F3F0E9;margin-right:auto">
 <span translate="no" style="display:inline-flex;align-items:baseline;font-family:'Archivo Black',system-ui,sans-serif;font-size:22px;line-height:0.8;letter-spacing:-0.015em;color:#F3F0E9;"><span>C</span><span style="font-size:0.6em">H</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">R</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">B</span><span style="font-size:1.06em;color:#5C86FF">i</span><span style="color:#5C86FF">A</span></span>
 </a>
 <div class="nav-links" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 4px">
-<a href="/colleges" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv0">Collèges</a>
-<a href="/entreprises" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv1">Entreprises</a>
-<a href="/histoire" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv2">Histoire</a>
-<a href="/actualites" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv3">Actualités</a>
+<a href="/" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv0">Accueil</a>
+<a href="/qui-sommes-nous" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv1">Qui sommes-nous&nbsp;?</a>
+<a href="/colleges" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv2">Collèges</a>
+<a href="/entreprises" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv3">Entreprises</a>
+<a href="/actualites" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv4">Actualités</a>
 <a class="nav-cta" href="/contact" aria-current="page" style="margin-left:8px;backdrop-filter:blur(16px) saturate(170%);-webkit-backdrop-filter:blur(16px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -8px 16px rgba(255,255,255,0.07), 0 4px 16px rgba(5,6,12,0.25);color:#F3F0E9;font-size:14.5px;font-weight:600;padding:9px 20px;border-radius:99px;transition:background 0.25s ease,border-color 0.25s ease;background:rgba(243,240,233,0.3);border:1px solid rgba(255,255,255,0.65)">Nous contacter</a>
 </div>
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-panel"><svg class="ic-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="ic-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="lbl">Menu</span></button>
+<div class="nav-panel" id="nav-panel"><a href="/">Accueil</a><a href="/qui-sommes-nous">Qui sommes-nous&nbsp;?</a><a href="/colleges">Collèges</a><a href="/entreprises">Entreprises</a><a href="/actualites">Actualités</a><a class="nav-panel-cta" href="/contact" aria-current="page">Nous contacter</a></div>
 </nav>
+<script>(function(){var n=document.querySelector('.nav-bar'),b=n&&n.querySelector('.nav-toggle');if(!b)return;
+function set(o){n.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.lbl').textContent=o?'Fermer':'Menu';}
+b.addEventListener('click',function(){set(!n.classList.contains('nav-open'));});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('nav-open')){set(false);b.focus();}});
+n.querySelectorAll('.nav-panel a').forEach(function(a){a.addEventListener('click',function(){set(false);});});})();</script>
 <header style="padding:clamp(112px,12vw,152px) 24px clamp(40px,5vw,64px)">
 <div style="max-width:1140px;margin:0 auto">
 <p style="margin:0 0 22px;font-size:17px;font-weight:600;color:#1B45F2">Nous contacter</p>
@@ -95,11 +113,11 @@ body { background: #F3F0E9; }
 <aside style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:28px;padding-top:8px">
 <div>
 <div style="font-size:14px;font-weight:600;color:#1B45F2;margin-bottom:8px">Par e-mail</div>
-<a href="mailto:contact.charabia@gmail.com" style="font-size:18px;font-weight:600;color:#0B0D18" class="hv4">contact.charabia@gmail.com</a>
+<a href="mailto:contact.charabia@gmail.com" style="font-size:18px;font-weight:600;color:#0B0D18" class="hv5">contact.charabia@gmail.com</a>
 </div>
 <div>
 <div style="font-size:14px;font-weight:600;color:#1B45F2;margin-bottom:8px">Sur LinkedIn</div>
-<a href="https://www.linkedin.com/company/charab-ia/" target="_blank" rel="noopener" style="font-size:18px;font-weight:600;color:#0B0D18" class="hv5">CharabIA</a>
+<a href="https://www.linkedin.com/company/charab-ia/" target="_blank" rel="noopener" style="font-size:18px;font-weight:600;color:#0B0D18" class="hv6">CharabIA</a>
 </div>
 <div style="border-top:1px solid rgba(11,13,24,0.14);padding-top:24px">
 <div style="font-size:14px;font-weight:600;color:#0B0D18;margin-bottom:8px">Vos données</div>
@@ -286,7 +304,7 @@ body { background: #F3F0E9; }
 </div>
 <p id="c-send-err" role="alert" hidden style="margin:0;padding:14px 16px;border-radius:12px;background:#FBE9E7;border:1px solid rgba(180,35,24,0.3);font-size:14.5px;line-height:1.55;color:#7A1A12">L’envoi n’a pas abouti. Réessayez dans un instant, ou écrivez-nous directement à <a href="mailto:contact.charabia@gmail.com" style="color:#7A1A12;font-weight:600;text-decoration:underline">contact.charabia@gmail.com</a>.</p>
 <div style="display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;padding-top:4px">
-<button id="c-submit" type="submit" style="min-height:48px;background:#0B0D18;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:14px 30px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv6">Envoyer ma demande</button>
+<button id="c-submit" type="submit" style="min-height:48px;background:#0B0D18;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:14px 30px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv7">Envoyer ma demande</button>
 <span style="font-size:13.5px;color:#585463"><span aria-hidden="true" style="color:#1B45F2">*</span> Champs obligatoires</span>
 </div>
 </form>
@@ -296,7 +314,7 @@ body { background: #F3F0E9; }
 </div>
 <h2 style="margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.04;letter-spacing:-0.035em;font-weight:600">Merci pour votre prise de contact&nbsp;!</h2>
 <p id="c-sent-text" style="margin:0;font-size:16.5px;line-height:1.6;color:#3A3642"></p>
-<button id="c-reset" type="button" style="min-height:44px;background:transparent;color:#0B0D18;border:1px solid rgba(11,13,24,0.25);font-family:inherit;font-size:15px;font-weight:600;padding:11px 22px;border-radius:99px;cursor:pointer;transition:border-color 0.2s ease" class="hv7">Envoyer une autre demande</button>
+<button id="c-reset" type="button" style="min-height:44px;background:transparent;color:#0B0D18;border:1px solid rgba(11,13,24,0.25);font-family:inherit;font-size:15px;font-weight:600;padding:11px 22px;border-radius:99px;cursor:pointer;transition:border-color 0.2s ease" class="hv8">Envoyer une autre demande</button>
 </div>
 </section>
 </div>
@@ -305,13 +323,13 @@ body { background: #F3F0E9; }
 <div style="max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 24px;align-items:center;justify-content:space-between;font-size:13.5px;color:rgba(11,13,24,0.55)">
 <span>© 2026 – CharabIA</span>
 <div style="display:flex;flex-wrap:wrap;gap:22px">
-<a href="/" style="color:rgba(11,13,24,0.55)" class="hv8">Accueil</a>
-<a href="/colleges" style="color:rgba(11,13,24,0.55)" class="hv9">Collèges</a>
-<a href="/entreprises" style="color:rgba(11,13,24,0.55)" class="hv10">Entreprises</a>
-<a href="/histoire" style="color:rgba(11,13,24,0.55)" class="hv11">Histoire</a>
-<a href="/actualites" style="color:rgba(11,13,24,0.55)" class="hv12">Actualités</a>
+<a href="/" style="color:rgba(11,13,24,0.55)" class="hv9">Accueil</a>
+<a href="/qui-sommes-nous" style="color:rgba(11,13,24,0.55)" class="hv10">Qui sommes-nous&nbsp;?</a>
+<a href="/colleges" style="color:rgba(11,13,24,0.55)" class="hv11">Collèges</a>
+<a href="/entreprises" style="color:rgba(11,13,24,0.55)" class="hv12">Entreprises</a>
+<a href="/actualites" style="color:rgba(11,13,24,0.55)" class="hv13">Actualités</a>
 <a href="/contact" aria-current="page" style="color:#0B0D18;font-weight:600">Contact</a>
-<a href="/mentions-legales" style="color:rgba(11,13,24,0.55)" class="hv13">Mentions légales</a>
+<a href="/mentions-legales" style="color:rgba(11,13,24,0.55)" class="hv14">Mentions légales</a>
 </div>
 </div>
 </footer>

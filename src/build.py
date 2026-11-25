@@ -21,7 +21,7 @@ pages = {
     "index.html": page_index.build(),
     "colleges.html": page_colleges.build(),
     "entreprises.html": page_entreprises.build(),
-    "histoire.html": page_autres.build_histoire(),
+    "qui-sommes-nous.html": page_autres.build_histoire(),
     "actualites.html": page_autres.build_actualites(),
     "contact.html": page_contact.build(),
     "mentions-legales.html": page_autres.build_mentions(),

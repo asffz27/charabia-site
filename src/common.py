@@ -2,9 +2,9 @@ import re
 
 PAGES = [
     ("index.html", "Accueil"),
+    ("qui-sommes-nous.html", "Qui sommes-nous ?"),
     ("colleges.html", "Collèges"),
     ("entreprises.html", "Entreprises"),
-    ("histoire.html", "Histoire"),
     ("actualites.html", "Actualités"),
     ("contact.html", "Contact"),
     ("mentions-legales.html", "Mentions légales"),
@@ -35,12 +35,21 @@ BASE_CSS = """
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
-  @media (max-width: 760px) {
-    .nav-cta { display: none !important; }
-    .nav-bar { flex-wrap: wrap !important; padding: 10px 14px 6px !important; gap: 6px 8px !important; }
-    .nav-links { flex-wrap: nowrap !important; width: 100%; justify-content: flex-start !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a { padding: 7px 11px !important; font-size: 14px !important; white-space: nowrap; flex: 0 0 auto; }
+  .nav-toggle { display: none; }
+  .nav-panel { display: none; }
+  @media (max-width: 980px) {
+    .nav-links { display: none !important; }
+    .nav-toggle { display: inline-flex; align-items: center; gap: 10px; background: rgba(243,240,233,0.12); border: 1px solid rgba(255,255,255,0.35); color: #F3F0E9; font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 99px; cursor: pointer; min-height: 44px; }
+    .nav-toggle svg { display: block; }
+    .nav-toggle .ic-close { display: none; }
+    .nav-open .nav-toggle .ic-open { display: none; }
+    .nav-open .nav-toggle .ic-close { display: block; }
+    .nav-open .nav-panel { display: flex; }
+    .nav-panel { flex-direction: column; width: 100%; padding: 8px 0 14px; gap: 2px; }
+    .nav-panel a { color: rgba(243,240,233,0.82); font-size: 19px; font-weight: 500; padding: 13px 6px; border-bottom: 1px solid rgba(243,240,233,0.1); }
+    .nav-panel a[aria-current="page"] { color: #F3F0E9; font-weight: 600; }
+    .nav-panel a.nav-panel-cta { margin-top: 14px; border: 0; background: #1B45F2; color: #F3F0E9; text-align: center; border-radius: 99px; font-weight: 600; font-size: 16px; }
+    .nav-open.nav-bar { background: rgba(11,13,24,0.96) !important; }
   }
 """
 
@@ -52,33 +61,58 @@ CTA = ('margin-left:8px;backdrop-filter:blur(16px) saturate(170%);-webkit-backdr
        'color:#F3F0E9;font-size:14.5px;font-weight:600;padding:9px 20px;border-radius:99px;transition:background 0.25s ease,border-color 0.25s ease')
 
 
+NAV_ITEMS = [("index.html", "Accueil"), ("qui-sommes-nous.html", "Qui sommes-nous ?"), ("colleges.html", "Collèges"),
+             ("entreprises.html", "Entreprises"), ("actualites.html", "Actualités")]
+
+NAV_JS = """<script>(function(){var n=document.querySelector('.nav-bar'),b=n&&n.querySelector('.nav-toggle');if(!b)return;
+function set(o){n.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.lbl').textContent=o?'Fermer':'Menu';}
+b.addEventListener('click',function(){set(!n.classList.contains('nav-open'));});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('nav-open')){set(false);b.focus();}});
+n.querySelectorAll('.nav-panel a').forEach(function(a){a.addEventListener('click',function(){set(false);});});})();</script>"""
+
+
 def nav(active):
     home = "#top" if active == "index.html" else "index.html"
     links = ""
-    for href, label in [("colleges.html", "Collèges"), ("entreprises.html", "Entreprises"), ("histoire.html", "Histoire"), ("actualites.html", "Actualités")]:
+    panel = ""
+    for href, label in NAV_ITEMS:
+        target = "#top" if (href == active == "index.html") else href
+        label_html = label.replace(" ?", "&nbsp;?")
         if href == active:
-            links += f'<a href="{href}" aria-current="page" style="{NAV_LINK_ON}">{label}</a>\n      '
+            links += f'<a href="{target}" aria-current="page" style="{NAV_LINK_ON}">{label_html}</a>\n      '
+            panel += f'<a href="{target}" aria-current="page">{label_html}</a>'
         else:
-            links += f'<a href="{href}" style="{NAV_LINK}" style-hover="{NAV_HOVER}">{label}</a>\n      '
+            links += f'<a href="{href}" style="{NAV_LINK}" style-hover="{NAV_HOVER}">{label_html}</a>\n      '
+            panel += f'<a href="{href}">{label_html}</a>'
+    cur = ' aria-current="page"' if active == "contact.html" else ""
     if active == "contact.html":
         cta = f'<a class="nav-cta" href="contact.html" aria-current="page" style="{CTA};background:rgba(243,240,233,0.3);border:1px solid rgba(255,255,255,0.65)">Nous contacter</a>'
     else:
         cta = (f'<a class="nav-cta" href="contact.html" style="{CTA};background:rgba(243,240,233,0.12);border:1px solid rgba(255,255,255,0.35)" '
                'style-hover="background:rgba(243,240,233,0.3);border-color:rgba(255,255,255,0.65)">Nous contacter</a>')
+    panel += f'<a class="nav-panel-cta" href="contact.html"{cur}>Nous contacter</a>'
+    burger = ('<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-panel">'
+              '<svg class="ic-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
+              '<svg class="ic-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
+              '<span class="lbl">Menu</span></button>')
     return f'''
-  <nav class="nav-bar" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
+  <nav class="nav-bar" aria-label="Navigation principale" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
     <a href="{home}" aria-label="CharabIA, retour à l’accueil" style="display:flex;align-items:center;gap:11px;color:#F3F0E9;margin-right:auto">
       {wordmark("22px")}
     </a>
     <div class="nav-links" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 4px">
       {links}{cta}
     </div>
-  </nav>'''
+    {burger}
+    <div class="nav-panel" id="nav-panel">{panel}</div>
+  </nav>
+  {NAV_JS}'''
 
 
 def footer_links(active):
     out = ""
     for href, label in PAGES:
+        label = label.replace(" ?", "&nbsp;?")
         target = "#top" if (href == active == "index.html") else href
         if href == active:
             out += f'<a href="{target}" aria-current="page" style="color:#0B0D18;font-weight:600">{label}</a>\n        '

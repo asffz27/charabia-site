@@ -31,12 +31,21 @@ a:focus-visible, [tabindex]:focus-visible, button:focus-visible { outline: 2px s
 html { scroll-behavior: auto; }
 *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-@media (max-width: 760px) {
-.nav-cta { display: none !important; }
-.nav-bar { flex-wrap: wrap !important; padding: 10px 14px 6px !important; gap: 6px 8px !important; }
-.nav-links { flex-wrap: nowrap !important; width: 100%; justify-content: flex-start !important; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.nav-links::-webkit-scrollbar { display: none; }
-.nav-links a { padding: 7px 11px !important; font-size: 14px !important; white-space: nowrap; flex: 0 0 auto; }
+.nav-toggle { display: none; }
+.nav-panel { display: none; }
+@media (max-width: 980px) {
+.nav-links { display: none !important; }
+.nav-toggle { display: inline-flex; align-items: center; gap: 10px; background: rgba(243,240,233,0.12); border: 1px solid rgba(255,255,255,0.35); color: #F3F0E9; font: inherit; font-size: 15px; font-weight: 600; padding: 9px 16px; border-radius: 99px; cursor: pointer; min-height: 44px; }
+.nav-toggle svg { display: block; }
+.nav-toggle .ic-close { display: none; }
+.nav-open .nav-toggle .ic-open { display: none; }
+.nav-open .nav-toggle .ic-close { display: block; }
+.nav-open .nav-panel { display: flex; }
+.nav-panel { flex-direction: column; width: 100%; padding: 8px 0 14px; gap: 2px; }
+.nav-panel a { color: rgba(243,240,233,0.82); font-size: 19px; font-weight: 500; padding: 13px 6px; border-bottom: 1px solid rgba(243,240,233,0.1); }
+.nav-panel a[aria-current="page"] { color: #F3F0E9; font-weight: 600; }
+.nav-panel a.nav-panel-cta { margin-top: 14px; border: 0; background: #1B45F2; color: #F3F0E9; text-align: center; border-radius: 99px; font-weight: 600; font-size: 16px; }
+.nav-open.nav-bar { background: rgba(11,13,24,0.96) !important; }
 }
 body { background: #F3F0E9; }
 .kl-c { background-image: url(/assets/box/kl-c.webp); }
@@ -65,38 +74,47 @@ body { background: #F3F0E9; }
 .hv0:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
 .hv1:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
 .hv2:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
-.hv3:hover{background:rgba(243,240,233,0.3) !important;border-color:rgba(255,255,255,0.65) !important}
-.hv4:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
-.hv5:hover{transform:translateY(-6px) !important;border-color:#1B45F2 !important}
-.hv6:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
-.hv7:hover{border-color:#1B45F2 !important;color:#1B45F2 !important}
-.hv8:hover{background:#0B0D18 !important}
-.hv9:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
+.hv3:hover{color:#F3F0E9 !important;background:rgba(255,255,255,0.09) !important}
+.hv4:hover{background:rgba(243,240,233,0.3) !important;border-color:rgba(255,255,255,0.65) !important}
+.hv5:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
+.hv6:hover{transform:translateY(-6px) !important;border-color:#1B45F2 !important}
+.hv7:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
+.hv8:hover{border-color:#1B45F2 !important;color:#1B45F2 !important}
+.hv9:hover{background:#0B0D18 !important}
 .hv10:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
-.hv11:hover{background:#F3F0E9 !important;color:#0B0D18 !important}
-.hv12:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
-.hv13:hover{color:#1B45F2 !important}
+.hv11:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
+.hv12:hover{background:#F3F0E9 !important;color:#0B0D18 !important}
+.hv13:hover{background:#1B45F2 !important;color:#F3F0E9 !important}
 .hv14:hover{color:#1B45F2 !important}
 .hv15:hover{color:#1B45F2 !important}
 .hv16:hover{color:#1B45F2 !important}
 .hv17:hover{color:#1B45F2 !important}
 .hv18:hover{color:#1B45F2 !important}
+.hv19:hover{color:#1B45F2 !important}
 </style>
 </head>
 <body>
 <div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
-<nav class="nav-bar" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
+<nav class="nav-bar" aria-label="Navigation principale" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 24px;padding:12px 20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(11,13,24,0.62);border-bottom:1px solid rgba(243,240,233,0.1)">
 <a href="/" aria-label="CharabIA, retour à l’accueil" style="display:flex;align-items:center;gap:11px;color:#F3F0E9;margin-right:auto">
 <span translate="no" style="display:inline-flex;align-items:baseline;font-family:'Archivo Black',system-ui,sans-serif;font-size:22px;line-height:0.8;letter-spacing:-0.015em;color:#F3F0E9;"><span>C</span><span style="font-size:0.6em">H</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">R</span><span style="font-size:0.55em">A</span><span style="font-size:0.55em">B</span><span style="font-size:1.06em;color:#5C86FF">i</span><span style="color:#5C86FF">A</span></span>
 </a>
 <div class="nav-links" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 4px">
+<a href="/" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv0">Accueil</a>
+<a href="/qui-sommes-nous" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv1">Qui sommes-nous&nbsp;?</a>
 <a href="/colleges" aria-current="page" style="color:#F3F0E9;font-size:14.5px;padding:8px 14px;border-radius:99px;background:rgba(255,255,255,0.12)">Collèges</a>
-<a href="/entreprises" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv0">Entreprises</a>
-<a href="/histoire" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv1">Histoire</a>
-<a href="/actualites" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv2">Actualités</a>
-<a class="nav-cta hv3" href="/contact" style="margin-left:8px;backdrop-filter:blur(16px) saturate(170%);-webkit-backdrop-filter:blur(16px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -8px 16px rgba(255,255,255,0.07), 0 4px 16px rgba(5,6,12,0.25);color:#F3F0E9;font-size:14.5px;font-weight:600;padding:9px 20px;border-radius:99px;transition:background 0.25s ease,border-color 0.25s ease;background:rgba(243,240,233,0.12);border:1px solid rgba(255,255,255,0.35)">Nous contacter</a>
+<a href="/entreprises" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv2">Entreprises</a>
+<a href="/actualites" style="color:rgba(243,240,233,0.74);font-size:14.5px;padding:8px 14px;border-radius:99px;transition:color 0.2s ease,background 0.2s ease" class="hv3">Actualités</a>
+<a class="nav-cta hv4" href="/contact" style="margin-left:8px;backdrop-filter:blur(16px) saturate(170%);-webkit-backdrop-filter:blur(16px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -8px 16px rgba(255,255,255,0.07), 0 4px 16px rgba(5,6,12,0.25);color:#F3F0E9;font-size:14.5px;font-weight:600;padding:9px 20px;border-radius:99px;transition:background 0.25s ease,border-color 0.25s ease;background:rgba(243,240,233,0.12);border:1px solid rgba(255,255,255,0.35)">Nous contacter</a>
 </div>
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-panel"><svg class="ic-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="ic-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="lbl">Menu</span></button>
+<div class="nav-panel" id="nav-panel"><a href="/">Accueil</a><a href="/qui-sommes-nous">Qui sommes-nous&nbsp;?</a><a href="/colleges" aria-current="page">Collèges</a><a href="/entreprises">Entreprises</a><a href="/actualites">Actualités</a><a class="nav-panel-cta" href="/contact">Nous contacter</a></div>
 </nav>
+<script>(function(){var n=document.querySelector('.nav-bar'),b=n&&n.querySelector('.nav-toggle');if(!b)return;
+function set(o){n.classList.toggle('nav-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.querySelector('.lbl').textContent=o?'Fermer':'Menu';}
+b.addEventListener('click',function(){set(!n.classList.contains('nav-open'));});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('nav-open')){set(false);b.focus();}});
+n.querySelectorAll('.nav-panel a').forEach(function(a){a.addEventListener('click',function(){set(false);});});})();</script>
 <header id="top" style="position:relative;background:#0b1a6e radial-gradient(130% 120% at 28% 38%, #1B45F2 0%, #1236b8 42%, #0b1a6e 78%, #070F38 100%);color:#F3F0E9;overflow:hidden;min-height:clamp(580px,43vw,620px)">
 <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(5,6,12,0.3) 0%, rgba(5,6,12,0.34) 50%, rgba(5,6,12,0.72) 100%)"></div>
 <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(112px,12vw,152px) 24px clamp(56px,6vw,88px)">
@@ -106,7 +124,7 @@ body { background: #F3F0E9; }
 </h1>
 <p style="margin:0 0 18px;font-size:clamp(21px,2.4vw,31px);line-height:1.3;font-weight:500;letter-spacing:-0.022em;text-wrap:pretty">Nous formons les collégiens à l’intelligence artificielle.</p>
 <p style="margin:0 0 30px;font-size:16.5px;line-height:1.62;color:rgba(243,240,233,0.78)">En deux heures, dans votre établissement, vos élèves découvrent ce que l’IA sait vraiment faire. Ils la manipulent en équipe autour d’un plateau de jeu mêlant énigmes et défis et repartent avec les bases d’un usage éclairé, sécurisé et critique de l’IA.</p>
-<a href="#ateliers" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv4">Découvrir les ateliers</a>
+<a href="#ateliers" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv5">Découvrir les ateliers</a>
 </div>
 </header>
 <section style="background:#EAE6DC;padding:clamp(64px,7vw,112px) 24px">
@@ -121,7 +139,7 @@ body { background: #F3F0E9; }
 <p style="margin:0 0 28px;font-size:17px;font-weight:600;color:#1B45F2">Notre solution</p>
 <h2 style="margin:0;font-size:clamp(30px,4.4vw,64px);line-height:1.06;letter-spacing:-0.04em;font-weight:600;text-wrap:pretty">CharabIA démystifie l’IA et donne aux élèves les clés pour la comprendre, l’utiliser et en tirer parti.</h2>
 </div>
-<a href="#ateliers" aria-label="Collèges : voir les deux ateliers disponibles" style="position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:340px;color:#F3F0E9;background:#0B0D18 radial-gradient(120% 120% at 80% 20%, #1B45F2 0%, #0b1a6e 45%, #0B0D18 85%);border:1px solid rgba(11,13,24,0.12);border-radius:22px;padding:clamp(28px,4vw,48px);transition:transform 0.4s cubic-bezier(0.2,0.8,0.2,1),border-color 0.3s ease" class="hv5">
+<a href="#ateliers" aria-label="Collèges : voir les deux ateliers disponibles" style="position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:340px;color:#F3F0E9;background:#0B0D18 radial-gradient(120% 120% at 80% 20%, #1B45F2 0%, #0b1a6e 45%, #0B0D18 85%);border:1px solid rgba(11,13,24,0.12);border-radius:22px;padding:clamp(28px,4vw,48px);transition:transform 0.4s cubic-bezier(0.2,0.8,0.2,1),border-color 0.3s ease" class="hv6">
 <div style="position:relative;margin-top:auto;display:flex;flex-wrap:wrap;gap:28px 48px;align-items:flex-end;justify-content:space-between;color:#F3F0E9">
 <div style="flex:1 1 360px;min-width:0">
 <div style="font-size:clamp(34px,4.4vw,64px);font-weight:600;letter-spacing:-0.04em;line-height:1.02;margin-bottom:14px;text-wrap:pretty">Collèges</div>
@@ -154,8 +172,8 @@ body { background: #F3F0E9; }
 <span style="background:#EAE6DC;border:1px solid rgba(11,13,24,0.12);border-radius:99px;padding:9px 16px;font-size:14.5px;font-weight:600">BoxIA réutilisable</span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:10px">
-<a href="#kohlantia" style="background:#0B0D18;color:#F3F0E9;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease" class="hv6">Koh LantIA</a>
-<a href="#spatial" style="background:transparent;color:#0B0D18;border:1px solid rgba(11,13,24,0.3);font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;transition:border-color 0.22s ease,color 0.22s ease" class="hv7">SpatIAl</a>
+<a href="#kohlantia" style="background:#0B0D18;color:#F3F0E9;font-size:15.5px;font-weight:600;padding:14px 26px;border-radius:99px;transition:background 0.22s ease" class="hv7">Koh LantIA</a>
+<a href="#spatial" style="background:transparent;color:#0B0D18;border:1px solid rgba(11,13,24,0.3);font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;transition:border-color 0.22s ease,color 0.22s ease" class="hv8">SpatIAl</a>
 </div>
 </div>
 </section>
@@ -200,7 +218,7 @@ body { background: #F3F0E9; }
 </div>
 </div>
 <div aria-hidden="true" style="height:clamp(20px,3vw,32px)"></div>
-<button type="button" data-box-btn="" aria-expanded="false" aria-label="Ouvrir la box Koh LantIA et déplier le plateau de jeu" style="position:relative;z-index:3;background:#1B45F2;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv8">Ouvrir la box</button>
+<button type="button" data-box-btn="" aria-expanded="false" aria-label="Ouvrir la box Koh LantIA et déplier le plateau de jeu" style="position:relative;z-index:3;background:#1B45F2;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv9">Ouvrir la box</button>
 <p style="margin:0;font-size:14px;line-height:1.5;color:inherit;opacity:0.7;text-align:center">La BoxIA se déplie en un plateau de jeu.</p>
 </div>
 </div>
@@ -230,7 +248,7 @@ body { background: #F3F0E9; }
 <p style="margin:0;font-size:15px;line-height:1.55;color:#585463"><span style="font-weight:600;color:#1B45F2">Ce que l’élève apprend&nbsp;:</span> élaborer un prompt complet pour générer une image la plus fidèle à une consigne. Les élèves apprennent à détecter les stéréotypes et biais produits par l’IA et à en débattre.</p>
 </li>
 </ul>
-<a href="/contact?atelier=kohlantia" style="display:inline-flex;background:#0B0D18;color:#F3F0E9;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease" class="hv9">Organiser cet atelier</a>
+<a href="/contact?atelier=kohlantia" style="display:inline-flex;background:#0B0D18;color:#F3F0E9;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease" class="hv10">Organiser cet atelier</a>
 </div>
 </div>
 </section>
@@ -262,7 +280,7 @@ body { background: #F3F0E9; }
 <p style="margin:0;font-size:15px;line-height:1.55;color:rgba(243,240,233,0.72)"><span style="font-weight:600;color:#5C86FF">Ce que l’élève apprend&nbsp;:</span> élaborer un prompt complet pour générer une image la plus fidèle à une consigne. Les élèves apprennent à détecter les stéréotypes et biais produits par l’IA et à en débattre.</p>
 </li>
 </ul>
-<a href="/contact?atelier=spatial" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv10">Organiser cet atelier</a>
+<a href="/contact?atelier=spatial" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv11">Organiser cet atelier</a>
 </div>
 <div style="display:flex;justify-content:center;min-width:0">
 <div data-box="" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:16px">
@@ -284,7 +302,7 @@ body { background: #F3F0E9; }
 </div>
 </div>
 <div aria-hidden="true" style="height:clamp(20px,3vw,32px)"></div>
-<button type="button" data-box-btn="" aria-expanded="false" aria-label="Ouvrir la box SpatIAl et déplier le plateau de jeu" style="position:relative;z-index:3;background:#1B45F2;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv11">Ouvrir la box</button>
+<button type="button" data-box-btn="" aria-expanded="false" aria-label="Ouvrir la box SpatIAl et déplier le plateau de jeu" style="position:relative;z-index:3;background:#1B45F2;color:#F3F0E9;border:none;font-family:inherit;font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:99px;cursor:pointer;transition:background 0.22s ease" class="hv12">Ouvrir la box</button>
 <p style="margin:0;font-size:14px;line-height:1.5;color:inherit;opacity:0.7;text-align:center">La BoxIA se déplie en un plateau de jeu.</p>
 </div>
 </div>
@@ -293,36 +311,64 @@ body { background: #F3F0E9; }
 <section style="background:#F3F0E9;padding:clamp(64px,7vw,110px) 24px">
 <div style="max-width:1140px;margin:0 auto">
 <h2 style="margin:0 0 14px;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600;text-wrap:pretty">Comprendre l’IA sans écran<span aria-hidden="true">*</span>, consolider les fondamentaux</h2>
-<p style="margin:0 0 40px;font-size:18px;line-height:1.6;color:#585463">Trois fondamentaux travaillés en équipe, jeu après jeu.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-bottom:14px">
+<p style="margin:0 0 28px;font-size:18px;line-height:1.6;color:#585463">Des ateliers qui s’inscrivent dans le respect des grands cadres de référence de l’usage de l’IA en éducation.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;background:rgba(11,13,24,0.14);border:1px solid rgba(11,13,24,0.14);border-radius:22px;overflow:hidden;margin-bottom:clamp(48px,6vw,72px)">
+<div style="background:#F3F0E9;padding:24px;display:flex;flex-direction:column;gap:18px">
+<div aria-hidden="true" style="width:120px;aspect-ratio:210/297;background:#fff;border:1px solid rgba(11,13,24,0.14);border-radius:4px;box-shadow:0 6px 18px rgba(11,13,24,0.10);padding:12px 11px;display:flex;flex-direction:column;justify-content:space-between">
+<span style="font-size:7.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#585463">Ministère de l’Éducation nationale</span>
+<span style="font-size:12px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;color:#0B0D18">L’IA en éducation&nbsp;: cadre d’usage</span>
+<span style="font-size:7.5px;color:#585463">Juin 2025</span>
+</div>
+<div>
+<div style="font-size:18px;font-weight:600;letter-spacing:-0.02em;line-height:1.25;margin-bottom:6px">Cadre d’usage de l’IA en éducation</div>
+<div style="font-size:14px;line-height:1.5;color:#585463">Ministère de l’Éducation nationale, juin 2025</div>
+</div>
+</div>
+<div style="background:#F3F0E9;padding:24px;display:flex;flex-direction:column;gap:18px">
+<div aria-hidden="true" style="width:120px;aspect-ratio:210/297;background:#fff;border:1px solid rgba(11,13,24,0.14);border-radius:4px;box-shadow:0 6px 18px rgba(11,13,24,0.10);padding:12px 11px;display:flex;flex-direction:column;justify-content:space-between">
+<span style="font-size:7.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#585463">Gouvernement du Québec</span>
+<span style="font-size:12px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;color:#0B0D18">Cadre de référence de la compétence numérique</span>
+<span style="font-size:7.5px;color:#585463">Québec</span>
+</div>
+<div>
+<div style="font-size:18px;font-weight:600;letter-spacing:-0.02em;line-height:1.25;margin-bottom:6px">Cadre de référence de la compétence numérique</div>
+<div style="font-size:14px;line-height:1.5;color:#585463">Gouvernement du Québec</div>
+</div>
+<div style="margin-top:auto;padding-top:18px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap"><span style="font-size:clamp(36px,4vw,48px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#1B45F2;font-variant-numeric:tabular-nums">12/12</span><span style="flex:1 1 140px;font-size:14.5px;line-height:1.45;color:#3A3642">dimensions mobilisées par nos ateliers</span></div>
+</div>
+<div style="background:#F3F0E9;padding:24px;display:flex;flex-direction:column;gap:18px">
+<div aria-hidden="true" style="width:120px;aspect-ratio:210/297;background:#fff;border:1px solid rgba(11,13,24,0.14);border-radius:4px;box-shadow:0 6px 18px rgba(11,13,24,0.10);padding:12px 11px;display:flex;flex-direction:column;justify-content:space-between">
+<span style="font-size:7.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#585463">Pix</span>
+<span style="font-size:12px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;color:#0B0D18">Les compétences numériques en intelligence artificielle</span>
+<span style="font-size:7.5px;color:#585463">Version 2.0 · Mai 2026</span>
+</div>
+<div>
+<div style="font-size:18px;font-weight:600;letter-spacing:-0.02em;line-height:1.25;margin-bottom:6px">Les compétences numériques en intelligence artificielle</div>
+<div style="font-size:14px;line-height:1.5;color:#585463">Référentiel Pix, version 2.0, mai 2026</div>
+</div>
+<div style="margin-top:auto;padding-top:18px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap"><span style="font-size:clamp(36px,4vw,48px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#1B45F2;font-variant-numeric:tabular-nums">33/41</span><span style="flex:1 1 140px;font-size:14.5px;line-height:1.45;color:#3A3642">compétences de niveaux Novice et Indépendant couvertes ou amorcées par l’ensemble des ateliers CharabIA</span></div>
+</div>
+</div>
+<h3 style="margin:0 0 24px;font-size:clamp(24px,2.8vw,34px);line-height:1.12;letter-spacing:-0.03em;font-weight:600;text-wrap:pretty">Trois fondamentaux travaillés en équipe, jeu après jeu.</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
 <div style="background:#EAE6DC;border:1px solid rgba(11,13,24,0.1);border-radius:22px;padding:30px 28px">
 <div style="font-size:22px;font-weight:600;letter-spacing:-0.025em;margin-bottom:12px;color:#1B45F2">Français&nbsp;: écrire avec rigueur</div>
 <p style="margin:0 0 16px;font-size:15.5px;line-height:1.6;color:#3A3642">Orthographe, syntaxe et mots justes deviennent nécessaires pour piloter l’IA&nbsp;: l’élève affine son prompt jusqu’à obtenir une image fidèle.</p>
-<p style="margin:0;font-size:13.5px;line-height:1.5;color:#585463">Québec&nbsp;: Communiquer · Produire du contenu<br>Pix IA&nbsp;: 2.2 Utiliser une IA générative</p>
+<p style="margin:0;padding-top:14px;border-top:1px solid rgba(11,13,24,0.12);font-size:13.5px;line-height:1.55;color:#585463"><span style="display:block;font-weight:600;color:#0B0D18;margin-bottom:4px">Compétence(s) couverte(s)</span>Communiquer · Produire du contenu (référentiel Québec)<br>Utiliser une IA générative (référentiel Pix)</p>
 </div>
 <div style="background:#EAE6DC;border:1px solid rgba(11,13,24,0.1);border-radius:22px;padding:30px 28px">
 <div style="font-size:22px;font-weight:600;letter-spacing:-0.025em;margin-bottom:12px;color:#1B45F2">Mathématiques&nbsp;: raisonner et arbitrer</div>
 <p style="margin:0 0 16px;font-size:15.5px;line-height:1.6;color:#3A3642">L’énigme mathématique oblige à choisir&nbsp;: quand s’appuyer sur l’IA, quand réfléchir soi-même&nbsp;? Entraide, écoute et décision collective.</p>
-<p style="margin:0;font-size:13.5px;line-height:1.5;color:#585463">Québec&nbsp;: Résoudre une variété de problèmes · Collaborer</p>
+<p style="margin:0;padding-top:14px;border-top:1px solid rgba(11,13,24,0.12);font-size:13.5px;line-height:1.55;color:#585463"><span style="display:block;font-weight:600;color:#0B0D18;margin-bottom:4px">Compétence(s) couverte(s)</span>Résoudre une variété de problèmes · Collaborer (référentiel Québec)</p>
 </div>
 <div style="background:#EAE6DC;border:1px solid rgba(11,13,24,0.1);border-radius:22px;padding:30px 28px">
 <div style="font-size:22px;font-weight:600;letter-spacing:-0.025em;margin-bottom:12px;color:#1B45F2">Esprit critique&nbsp;: vérifier, débattre, respecter autrui</div>
 <p style="margin:0 0 16px;font-size:15.5px;line-height:1.6;color:#3A3642">Repérer erreurs, hallucinations et stéréotypes, puis argumenter en équipe&nbsp;: les biais des données deviennent visibles et discutables.</p>
-<p style="margin:0;font-size:13.5px;line-height:1.5;color:#585463">Québec&nbsp;: Pensée critique · Culture informationnelle<br>Pix IA&nbsp;: 2.2 · 3.5 Expliquer les enjeux culturels et sociaux</p>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(11,13,24,0.14);border:1px solid rgba(11,13,24,0.14);border-radius:22px;overflow:hidden">
-<div style="background:#F3F0E9;padding:30px 28px;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap">
-<div style="font-size:clamp(44px,5vw,64px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#1B45F2;font-variant-numeric:tabular-nums">12/12</div>
-<div style="flex:1 1 180px;font-size:15.5px;line-height:1.5;color:#3A3642">dimensions du Cadre de référence de la compétence numérique du Québec mobilisées</div>
-</div>
-<div style="background:#F3F0E9;padding:30px 28px;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap">
-<div style="font-size:clamp(44px,5vw,64px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#1B45F2;font-variant-numeric:tabular-nums">33/41</div>
-<div style="flex:1 1 180px;font-size:15.5px;line-height:1.5;color:#3A3642">compétences Pix IA de niveaux Novice et Indépendant couvertes ou amorcées par l’ensemble des ateliers CharabIA</div>
+<p style="margin:0;padding-top:14px;border-top:1px solid rgba(11,13,24,0.12);font-size:13.5px;line-height:1.55;color:#585463"><span style="display:block;font-weight:600;color:#0B0D18;margin-bottom:4px">Compétence(s) couverte(s)</span>Pensée critique · Culture informationnelle (référentiel Québec)<br>Utiliser une IA générative · Expliquer les enjeux culturels et sociaux (référentiel Pix)</p>
 </div>
 </div>
 <p style="margin:18px 0 0;font-size:13px;line-height:1.55;color:#6b6676">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
-<p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676">Sources&nbsp;: Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
+<p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676">Sources&nbsp;: L’IA en éducation&nbsp;: cadre d’usage, ministère de l’Éducation nationale, juin 2025. Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
 </div>
 </section>
 <section style="background:#EAE6DC;border-top:1px solid rgba(11,13,24,0.08);padding:clamp(56px,6vw,88px) 24px">
@@ -343,7 +389,7 @@ body { background: #F3F0E9; }
 <h2 style="margin:0;font-size:clamp(32px,4.6vw,64px);line-height:1;letter-spacing:-0.045em;font-weight:600;text-wrap:pretty">Organiser un atelier dans votre établissement</h2>
 <div>
 <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:rgba(243,240,233,0.75)">Vous souhaitez organiser un atelier CharabIA dans votre établissement&nbsp;? Écrivez-nous à <a href="mailto:contact.charabia@gmail.com" style="color:#F3F0E9;font-weight:600">contact.charabia@gmail.com</a>. Nous reviendrons vers vous pour planifier votre atelier.</p>
-<a href="/contact?objet=atelier" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv12">Organiser un atelier</a>
+<a href="/contact?objet=atelier" style="display:inline-flex;background:#F3F0E9;color:#0B0D18;font-size:15.5px;font-weight:600;padding:14px 28px;border-radius:99px;transition:background 0.22s ease,color 0.22s ease" class="hv13">Organiser un atelier</a>
 </div>
 </div>
 </section>
@@ -351,13 +397,13 @@ body { background: #F3F0E9; }
 <div style="max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px 24px;align-items:center;justify-content:space-between;font-size:13.5px;color:rgba(11,13,24,0.55)">
 <span>© 2026 – CharabIA</span>
 <div style="display:flex;flex-wrap:wrap;gap:22px">
-<a href="/" style="color:rgba(11,13,24,0.55)" class="hv13">Accueil</a>
+<a href="/" style="color:rgba(11,13,24,0.55)" class="hv14">Accueil</a>
+<a href="/qui-sommes-nous" style="color:rgba(11,13,24,0.55)" class="hv15">Qui sommes-nous&nbsp;?</a>
 <a href="/colleges" aria-current="page" style="color:#0B0D18;font-weight:600">Collèges</a>
-<a href="/entreprises" style="color:rgba(11,13,24,0.55)" class="hv14">Entreprises</a>
-<a href="/histoire" style="color:rgba(11,13,24,0.55)" class="hv15">Histoire</a>
-<a href="/actualites" style="color:rgba(11,13,24,0.55)" class="hv16">Actualités</a>
-<a href="/contact" style="color:rgba(11,13,24,0.55)" class="hv17">Contact</a>
-<a href="/mentions-legales" style="color:rgba(11,13,24,0.55)" class="hv18">Mentions légales</a>
+<a href="/entreprises" style="color:rgba(11,13,24,0.55)" class="hv16">Entreprises</a>
+<a href="/actualites" style="color:rgba(11,13,24,0.55)" class="hv17">Actualités</a>
+<a href="/contact" style="color:rgba(11,13,24,0.55)" class="hv18">Contact</a>
+<a href="/mentions-legales" style="color:rgba(11,13,24,0.55)" class="hv19">Mentions légales</a>
 </div>
 </div>
 </footer>

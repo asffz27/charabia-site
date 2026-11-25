@@ -146,7 +146,27 @@ def fondamental(title, text, refs):
     return f'''<div style="background:#EAE6DC;border:1px solid rgba(11,13,24,0.1);border-radius:22px;padding:30px 28px">
           <div style="font-size:22px;font-weight:600;letter-spacing:-0.025em;margin-bottom:12px;color:#1B45F2">{title}</div>
           <p style="margin:0 0 16px;font-size:15.5px;line-height:1.6;color:#3A3642">{text}</p>
-          <p style="margin:0;font-size:13.5px;line-height:1.5;color:#585463">{refs}</p>
+          <p style="margin:0;padding-top:14px;border-top:1px solid rgba(11,13,24,0.12);font-size:13.5px;line-height:1.55;color:#585463"><span style="display:block;font-weight:600;color:#0B0D18;margin-bottom:4px">Compétence(s) couverte(s)</span>{refs}</p>
+        </div>'''
+
+
+def cadre(cover_top, cover_title, cover_foot, title, source, stat=None, stat_txt=""):
+    statblock = ""
+    if stat:
+        statblock = (f'<div style="margin-top:auto;padding-top:18px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap">'
+                     f'<span style="font-size:clamp(36px,4vw,48px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#1B45F2;font-variant-numeric:tabular-nums">{stat}</span>'
+                     f'<span style="flex:1 1 140px;font-size:14.5px;line-height:1.45;color:#3A3642">{stat_txt}</span></div>')
+    return f'''<div style="background:#F3F0E9;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div aria-hidden="true" style="width:120px;aspect-ratio:210/297;background:#fff;border:1px solid rgba(11,13,24,0.14);border-radius:4px;box-shadow:0 6px 18px rgba(11,13,24,0.10);padding:12px 11px;display:flex;flex-direction:column;justify-content:space-between">
+            <span style="font-size:7.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#585463">{cover_top}</span>
+            <span style="font-size:12px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;color:#0B0D18">{cover_title}</span>
+            <span style="font-size:7.5px;color:#585463">{cover_foot}</span>
+          </div>
+          <div>
+            <div style="font-size:18px;font-weight:600;letter-spacing:-0.02em;line-height:1.25;margin-bottom:6px">{title}</div>
+            <div style="font-size:14px;line-height:1.5;color:#585463">{source}</div>
+          </div>
+          {statblock}
         </div>'''
 
 
@@ -276,18 +296,20 @@ BODY = f'''<div style="background:#F3F0E9;min-height:100svh;overflow-x:hidden">
   <section style="background:#F3F0E9;padding:clamp(64px,7vw,110px) 24px">
     <div style="max-width:1140px;margin:0 auto">
       <h2 style="margin:0 0 14px;font-size:clamp(30px,4.2vw,58px);line-height:1.03;letter-spacing:-0.04em;font-weight:600;text-wrap:pretty">Comprendre l’IA sans écran<span aria-hidden="true">*</span>, consolider les fondamentaux</h2>
-      <p style="margin:0 0 40px;font-size:18px;line-height:1.6;color:#585463">Trois fondamentaux travaillés en équipe, jeu après jeu.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-bottom:14px">
-        {fondamental("Français&nbsp;: écrire avec rigueur", "Orthographe, syntaxe et mots justes deviennent nécessaires pour piloter l’IA&nbsp;: l’élève affine son prompt jusqu’à obtenir une image fidèle.", "Québec&nbsp;: Communiquer · Produire du contenu<br>Pix IA&nbsp;: 2.2 Utiliser une IA générative")}
-        {fondamental("Mathématiques&nbsp;: raisonner et arbitrer", "L’énigme mathématique oblige à choisir&nbsp;: quand s’appuyer sur l’IA, quand réfléchir soi-même&nbsp;? Entraide, écoute et décision collective.", "Québec&nbsp;: Résoudre une variété de problèmes · Collaborer")}
-        {fondamental("Esprit critique&nbsp;: vérifier, débattre, respecter autrui", "Repérer erreurs, hallucinations et stéréotypes, puis argumenter en équipe&nbsp;: les biais des données deviennent visibles et discutables.", "Québec&nbsp;: Pensée critique · Culture informationnelle<br>Pix IA&nbsp;: 2.2 · 3.5 Expliquer les enjeux culturels et sociaux")}
+      <p style="margin:0 0 28px;font-size:18px;line-height:1.6;color:#585463">Des ateliers qui s’inscrivent dans le respect des grands cadres de référence de l’usage de l’IA en éducation.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;background:rgba(11,13,24,0.14);border:1px solid rgba(11,13,24,0.14);border-radius:22px;overflow:hidden;margin-bottom:clamp(48px,6vw,72px)">
+        {cadre("Ministère de l’Éducation nationale", "L’IA en éducation&nbsp;: cadre d’usage", "Juin 2025", "Cadre d’usage de l’IA en éducation", "Ministère de l’Éducation nationale, juin 2025")}
+        {cadre("Gouvernement du Québec", "Cadre de référence de la compétence numérique", "Québec", "Cadre de référence de la compétence numérique", "Gouvernement du Québec", "12/12", "dimensions mobilisées par nos ateliers")}
+        {cadre("Pix", "Les compétences numériques en intelligence artificielle", "Version 2.0 · Mai 2026", "Les compétences numériques en intelligence artificielle", "Référentiel Pix, version 2.0, mai 2026", "33/41", "compétences de niveaux Novice et Indépendant couvertes ou amorcées par l’ensemble des ateliers CharabIA")}
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:rgba(11,13,24,0.14);border:1px solid rgba(11,13,24,0.14);border-radius:22px;overflow:hidden">
-        {chiffre("12/12", "dimensions du Cadre de référence de la compétence numérique du Québec mobilisées")}
-        {chiffre("33/41", "compétences Pix IA de niveaux Novice et Indépendant couvertes ou amorcées par l’ensemble des ateliers CharabIA")}
+      <h3 style="margin:0 0 24px;font-size:clamp(24px,2.8vw,34px);line-height:1.12;letter-spacing:-0.03em;font-weight:600;text-wrap:pretty">Trois fondamentaux travaillés en équipe, jeu après jeu.</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px">
+        {fondamental("Français&nbsp;: écrire avec rigueur", "Orthographe, syntaxe et mots justes deviennent nécessaires pour piloter l’IA&nbsp;: l’élève affine son prompt jusqu’à obtenir une image fidèle.", "Communiquer · Produire du contenu (référentiel Québec)<br>Utiliser une IA générative (référentiel Pix)")}
+        {fondamental("Mathématiques&nbsp;: raisonner et arbitrer", "L’énigme mathématique oblige à choisir&nbsp;: quand s’appuyer sur l’IA, quand réfléchir soi-même&nbsp;? Entraide, écoute et décision collective.", "Résoudre une variété de problèmes · Collaborer (référentiel Québec)")}
+        {fondamental("Esprit critique&nbsp;: vérifier, débattre, respecter autrui", "Repérer erreurs, hallucinations et stéréotypes, puis argumenter en équipe&nbsp;: les biais des données deviennent visibles et discutables.", "Pensée critique · Culture informationnelle (référentiel Québec)<br>Utiliser une IA générative · Expliquer les enjeux culturels et sociaux (référentiel Pix)")}
       </div>
       <p style="margin:18px 0 0;font-size:13px;line-height:1.55;color:#6b6676">* Certains jeux peuvent faire appel à un écran. Ce n’est pas le cœur de l’atelier&nbsp;: c’est une application concrète des connaissances des élèves.</p>
-      <p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676">Sources&nbsp;: Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
+      <p style="margin:8px 0 0;font-size:13px;line-height:1.55;color:#6b6676">Sources&nbsp;: L’IA en éducation&nbsp;: cadre d’usage, ministère de l’Éducation nationale, juin 2025. Cadre de référence de la compétence numérique, gouvernement du Québec, 2026. Référentiel « Les compétences numériques en intelligence artificielle », Pix, version 2.0, mai 2026.</p>
     </div>
   </section>
 
